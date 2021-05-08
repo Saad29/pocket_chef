@@ -1,0 +1,54 @@
+name: pocket_chef
+description: Flutter app for pocket chef 
+
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  # Video Player Dependency
+  video_player: ^2.1.0
+  #for glowing widgets
+  flutter_glow: ^0.2.0
+  #for gif dialog
+  giffy_dialog: ^1.8.0
+  #animations
+  simple_animations: ^3.0.0
+  supercharged: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+
+  assets:
+    - assets/
+
+  fonts:
+    - family: PTSerif
+      fonts:
+        - asset: fonts/PTSerif-Regular.ttf
+          weight: 400
+        - asset: fonts/PTSerif-Bold.ttf
+          weight: 600
+    - family: SourceSansPro
+      fonts:
+        - asset: fonts/SourceSansPro-Light.ttf
+          weight: 200
+        - asset: fonts/SourceSansPro-Regular.ttf
+          weight: 400
+        - asset: fonts/SourceSansPro-Bold.ttf
+          weight: 600
+    - family: Indie
+      fonts:
+        - asset: fonts/IndieFlower-Regular.ttf
+          weight: 400
