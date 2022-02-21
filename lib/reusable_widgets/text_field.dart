@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_chef/constants/colors.dart';
-import 'package:pocket_chef/constants/dimens.dart';
-import 'package:pocket_chef/constants/fonts.dart';
+import 'package:pocket_chef/config/colors.dart';
+import 'package:pocket_chef/config/dimens.dart';
+import 'package:pocket_chef/config/fonts.dart';
 
 class NameField extends StatelessWidget {
   final TextEditingController textController;
