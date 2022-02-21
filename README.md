@@ -1,16 +1,25 @@
 # pocket_chef
 
-Flutter app for pocket chef 
+Flutter app sample for food based e-commerce, namely food sharing app.
 
-## Getting Started
+## The Concept
 
-This project is a starting point for a Flutter application.
+This project is a demo app to demonstrate how a food sharing app would look like. Youtube demo [here](https://www.youtube.com/watch?v=f45y7S_kA2M)
 
-A few resources to get you started if this is your first Flutter project:
+Main ideas of the concept:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- As a chef you can post your cooked food to sell.
+- As a foodie you can buy any locally cooked food
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screengrabs
+
+![Login-screen](https://github.com/Saad29/pocket_chef/blob/master/images/pc.gif)
+
+![Screenshot](/images/home.jpg)
+
+![Screenshot](/images/detail.jpg)
+
+
+
+
+
