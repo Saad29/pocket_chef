@@ -262,12 +262,14 @@ class _FoodieHomeState extends State<FoodieHome> {
                 blurRadius: 15,
               )
             ]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SvgPicture.asset(imagePath, width: 40),
-            PrimaryText(text: name, fontWeight: FontWeight.w800, size: 16),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SvgPicture.asset(imagePath, width: 40),
+              PrimaryText(text: name, fontWeight: FontWeight.w800, size: 16),
+            ],
+          ),
         ),
       ),
     );
