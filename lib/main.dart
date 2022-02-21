@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocket_chef/screens/login_screen.dart';
-
 import 'screens/mode_selection.dart';
-import 'screens/chef_profile.dart';
+import 'screens/chef_home.dart';
 
 void main() {
   runApp(PouchApp());

@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
-import 'package:pocket_chef/constants/colors.dart';
-import 'package:pocket_chef/constants/dimens.dart';
-import 'package:pocket_chef/constants/fonts.dart';
-import 'package:pocket_chef/screens/chef_profile.dart';
-import 'package:pocket_chef/screens/foodie_profile.dart';
-import 'package:pocket_chef/screens/login_screen.dart';
+import 'package:glassmorphism/glassmorphism.dart';
+import 'package:pocket_chef/config/colors.dart';
+import 'package:pocket_chef/config/dimens.dart';
+import 'package:pocket_chef/config/fonts.dart';
+import 'package:pocket_chef/reusable_widgets/background_video.dart';
+import 'package:pocket_chef/reusable_widgets/bottom_app_bar.dart';
 import 'package:pocket_chef/utils/fade_in.dart';
 
-class ModeSelectionPage extends StatelessWidget {
+class ModeSelectionPage extends StatefulWidget {
+  @override
+  _ModeSelectionPageState createState() => _ModeSelectionPageState();
+}
+
+class _ModeSelectionPageState extends State<ModeSelectionPage> {
   @override
   Widget build(BuildContext context) {
     /// To set orientation always portrait
@@ -28,16 +33,43 @@ class ModeSelectionPage extends StatelessWidget {
               children: [
                 BackgroundVideo(),
                 Align(
-                  child: Center(
-                      child: SingleChildScrollView(
-                          child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ModeText(),
-                      const SizedBox(height: 30.0),
-                      SelectionRow()
-                    ],
-                  ))),
+                  child: GlassmorphicContainer(
+                    width: 400,
+                    height: 200,
+                    borderRadius: 20,
+                    blur: 20,
+                    alignment: Alignment.bottomCenter,
+                    border: 2,
+                    linearGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color(0xFFffffff).withOpacity(0.1),
+                          Color(0xFFFFFFFF).withOpacity(0.05),
+                        ],
+                        stops: [
+                          0.1,
+                          1,
+                        ]),
+                    borderGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFFffffff).withOpacity(0.5),
+                        Color((0xFFFFFFFF)).withOpacity(0.5),
+                      ],
+                    ),
+                    child: Center(
+                        child: SingleChildScrollView(
+                            child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ModeText(),
+                        const SizedBox(height: 30.0),
+                        SelectionRow()
+                      ],
+                    ))),
+                  ),
                 )
               ],
             );
@@ -48,7 +80,48 @@ class ModeSelectionPage extends StatelessWidget {
   }
 
   Future<bool> _onBackPressed() {
-    //can also have flare animations
+    return showDialog(
+            context: context,
+            builder: (context) => AssetGiffyDialog(
+                  buttonCancelColor: Colors.redAccent,
+                  buttonOkColor: primaryLighter,
+                  image: Image.asset(
+                    'assets/panBig.gif',
+                    fit: BoxFit.cover,
+                  ),
+                  title: GlowText(
+                    'Signing Out',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: secondaryText,
+                        fontFamily: indie,
+                        fontSize: biggerText,
+                        letterSpacing: 1.5),
+                  ),
+                  entryAnimation: EntryAnimation.TOP,
+                  description: Text(
+                    'Are you sure?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: secondaryText,
+                        fontFamily: indie,
+                        fontSize: biggerText,
+                        letterSpacing: 1.5),
+                  ),
+                  onOkButtonPressed: () {
+                    Navigator.of(context).pop(true);
+                    //navigating back to login screen
+                    // Navigator.popUntil(context, ModalRoute.withName('/login'));
+                  },
+                )) ??
+        false;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
 
@@ -87,8 +160,8 @@ class ChefMode extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlowButton(
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ChefProfilePage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BottomBar()));
       },
       color: accent,
       child: Text(
@@ -108,8 +181,8 @@ class FoodieMode extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlowButton(
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => FoodieProfilePage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BottomBar()));
       },
       color: accent,
       child: Text(
